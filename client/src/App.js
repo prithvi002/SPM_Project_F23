@@ -12,7 +12,9 @@ function App()
   }
 
   return(
-    <div className = "App">{
+    <div className = "App">
+      <img className="homepage-logo" referrerPolicy="no-referrer" src={process.env.PUBLIC_URL + "/infinity-travel-logo.png"} height="80px" width="120px"/>
+    {
       currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm}/>
     }
     </div>
