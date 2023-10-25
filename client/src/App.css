@@ -43,3 +43,7 @@ button {
 .homepage-logo {
     padding-right: 120px;
 }
+
+.error-message {
+    color: white;
+}
