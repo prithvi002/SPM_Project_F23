@@ -25,6 +25,7 @@ export const Register = (props) => {
         alert("User registered successfully!");
         console.log(name);
         console.log(email);
+        props.onFormSwitch('homepage');
     }
 
     const isNameValid = (name) => {

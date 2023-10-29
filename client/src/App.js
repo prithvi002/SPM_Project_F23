@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Login} from './Login';
 import {Register} from './Register';
+import { Homepage } from './Homepage';
 import ReactGA from "react-ga4";
 import './App.css';
 
@@ -21,9 +22,9 @@ function App() {
         <div className="App">
             <img className="homepage-logo" referrerPolicy="no-referrer"
                  src={process.env.PUBLIC_URL + "/infinity-travel-logo.png"} height="80px" width="120px"/>
-            {
-                currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
-            }
+            {currentForm === "login" ? ( <Login onFormSwitch={toggleForm} />) 
+            : currentForm === "register" ? (<Register onFormSwitch={toggleForm} />) 
+            : currentForm === "homepage" ? (<Homepage onFormSwitch={toggleForm} />) : null}
         </div>
     )
 }
