@@ -6,6 +6,13 @@ import { getNotifications } from './controllers/notificationsController.js'
 const app = express()
 app.use(cors())
 
+const db = mysql.createConnection({
+  host: "127.0.0.1",
+  user: 'root',
+  password:'',
+  database: 'crud'
+})
+
 app.get('/users', (req, res) => {
   const sql = "SELECT * FROM  users";
   db.query(sql, (err, data) => {
