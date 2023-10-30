@@ -10,7 +10,6 @@ CREATE TABLE User (
     LastLoginDate DATETIME,
     UserRole ENUM('regular', 'admin')
 );
-
 -- Flight Table
 CREATE TABLE Flight (
     FlightID INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,7 +23,6 @@ CREATE TABLE Flight (
     FlightCode VARCHAR(20),
     FlightDuration TIME,
 );
-
 -- Booking Table
 CREATE TABLE Booking (
     BookingID INT AUTO_INCREMENT PRIMARY KEY,
@@ -37,7 +35,6 @@ CREATE TABLE Booking (
     FOREIGN KEY (UserID) REFERENCES User(UserID),
     FOREIGN KEY (FlightID) REFERENCES Flight(FlightID)
 );
-
 -- Coupon Code Table
 CREATE TABLE CouponCode (
     CouponCodeID INT AUTO_INCREMENT PRIMARY KEY,
@@ -47,17 +44,13 @@ CREATE TABLE CouponCode (
     MaxUsageCount INT,
     CurrentUsageCount INT
 );
-
--- User Notifications Table
-CREATE TABLE UserNotifications (
+-- Notifications Table
+CREATE TABLE Notifications (
     NotificationID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT,
+    UserRole ENUM('regular', 'admin'),
     Message TEXT,
     Timestamp DATETIME,
-    ReadStatus TINYINT(1), -- TINYINT(1) is used to represent boolean values since SQL doesn't contain BOOLEAN type
-    FOREIGN KEY (UserID) REFERENCES User(UserID)
 );
-
 -- Google Analytics Table
 CREATE TABLE GoogleAnalytics (
     AnalyticsID INT AUTO_INCREMENT PRIMARY KEY,
@@ -66,7 +59,6 @@ CREATE TABLE GoogleAnalytics (
     Data JSON,
     FOREIGN KEY (UserID) REFERENCES User(UserID)
 );
-
 -- Session Table
 CREATE TABLE Session (
     SessionID INT AUTO_INCREMENT PRIMARY KEY,
