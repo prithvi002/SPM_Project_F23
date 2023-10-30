@@ -55,3 +55,17 @@ button {
   display: flex;
   flex-direction: column;
 }
+
+.notifications-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification {
+  padding: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  background-color: #7439db;
+  max-width: 65ch;
+}

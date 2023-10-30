@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Login } from "./Login";
-import { Register } from "./Register";
-import { Homepage } from "./Homepage";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+import { Homepage } from "./pages/Homepage";
 import ReactGA from "react-ga4";
 import {
   BrowserRouter as Router,
