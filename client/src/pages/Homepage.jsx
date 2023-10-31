@@ -9,8 +9,6 @@ export const Homepage = () => {
 
       <Notifications />
 
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
     </div>
   );
 };
