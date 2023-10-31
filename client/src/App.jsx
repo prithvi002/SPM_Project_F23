@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Homepage } from "./pages/Homepage";
+import { UserHomepage } from "./pages/UserHomepage";
 import ReactGA from "react-ga4";
 import {
   BrowserRouter as Router,
@@ -44,6 +45,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Homepage />} />
+          <Route path="/welcome" element={<UserHomepage />} />
         </Routes>
       </Router>
     </div>

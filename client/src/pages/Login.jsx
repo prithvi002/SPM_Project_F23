@@ -25,7 +25,7 @@ export const Login = () => {
 
       if (response.status === 200) {
         setMessage("Success");
-        navigate('/homepage');
+        navigate('/welcome');
       } else {
         setMessage(data.message);
       }

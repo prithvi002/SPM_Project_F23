@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -7,22 +8,46 @@ export const Register = (props) => {
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
   const isSubmitDisabled = () => {
     return !(isNameValid(name) && email && isPasswordValid(pass));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isSubmitDisabled()) {
       // Password does not meet the criteria
       // alert("Password does not meet the criteria.");
       return;
     }
-    alert("User registered successfully!");
+    // alert("User registered successfully!");
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password: pass }), // Pass the data to the API
+      });
+  
+      if (response.status === 201) {
+        // If the status code is 201 (Created), it means the user was registered successfully
+        console.log(name);
+        console.log(email);
+        navigate('/welcome');
+      } else {
+        // Handle registration failure, e.g., user already exists
+        const data = await response.json();
+        alert(data.message); // Display the error message from the server
+      }
+    } catch (error) {
+      // Handle any other error that might occur during the API call
+      alert("An error occurred. Please try again later.");
+    }
     console.log(name);
     console.log(email);
-    props.onFormSwitch("homepage");
+    // props.onFormSwitch("homepage");
   };
 
   const isNameValid = (name) => {
