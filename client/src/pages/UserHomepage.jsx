@@ -8,7 +8,6 @@ export const UserHomepage = () => {
       <h1>Welcome Traveler! This is your homepage</h1>
 
       <Notifications />
-
     </div>
   );
 };
