@@ -5,6 +5,7 @@ export async function getNotifications(req, res) {
     const query = `
         SELECT NotificationID, UserRole, Message, Timestamp
         FROM Notifications
+        WHERE UserRole = 'regular'
         ORDER BY Timestamp DESC
     `;
 
