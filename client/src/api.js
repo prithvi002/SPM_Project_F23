@@ -8,7 +8,7 @@ export const apiFetch = async (path, options) => {
             ...options?.headers,
             "Content-Type": "application/json",
         },
-        credentials: "include",
+        // credentials: "include",
     }
 
     return await fetch(url.href, finalOptions);

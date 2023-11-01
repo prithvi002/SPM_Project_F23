@@ -1,6 +1,5 @@
 import express from 'express'
 import cors from 'cors'
-import {db} from './mysql.js'
 import { getNotifications } from './controllers/notificationsController.js'
 import { getUsers } from './controllers/userController.js'
 import { authenticateUser } from './controllers/loginController.js'
