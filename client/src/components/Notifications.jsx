@@ -6,7 +6,7 @@ const Notifications = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await apiFetch("/notifications");
+      const response = await apiFetch(`/notifications`);
       const data = await response.json();
       setNotifications(data);
     })();

@@ -5,11 +5,13 @@ export async function getNotifications(req, res) {
     const query = `
         SELECT NotificationID, UserRole, Message, Timestamp
         FROM Notifications
-        WHERE UserRole = 'regular'
+        WHERE UserRole = ?
         ORDER BY Timestamp DESC
     `;
 
-    const [notificationRows,] = await db.query(query);
+    const userRole = req.query.userRole || 'regular';
+
+    const [notificationRows,] = await db.query(query, [userRole]);
     const notifications = notificationRows.map(row => new Notification(
         row.NotificationID,
         row.UserRole,

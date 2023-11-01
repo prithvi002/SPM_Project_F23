@@ -5,7 +5,7 @@ export async function authenticateUser(req, res) {
     const { email, password } = req.body;
     if (!email || !password) {
         return res.status(400).json({ message: 'Email and password are required' });
-      }
+    }
     const query = `
         SELECT UserID FROM User WHERE Email = ? AND Password = ?
     `;
@@ -16,7 +16,7 @@ export async function authenticateUser(req, res) {
             return res.status(200).json({ message: "Success" });
         } else {
             return res.status(401).json({ message: "Invalid email or password" });
-          }
+        }
     }
     catch (error) {
         console.error(error);
