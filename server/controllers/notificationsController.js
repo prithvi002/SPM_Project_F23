@@ -9,7 +9,7 @@ export async function getNotifications(req, res) {
         ORDER BY Timestamp DESC
     `;
 
-    const notificationRows = await db.query(query);
+    const [notificationRows,] = await db.query(query);
     const notifications = notificationRows.map(row => new Notification(
         row.NotificationID,
         row.UserRole,
