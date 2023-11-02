@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ export const Login = () => {
     e.preventDefault();
     console.log(e.target.email.value);
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export const Login = () => {
 
       if (response.status === 200) {
         setMessage("Success");
-        navigate('/welcome');
+        navigate("/welcome");
       } else {
         setMessage(data.message);
       }

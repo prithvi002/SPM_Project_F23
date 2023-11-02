@@ -9,7 +9,9 @@ export async function getNotifications(req, res) {
         ORDER BY Timestamp DESC
     `;
 
-    const userRole = req.query.userRole || 'regular';
+    console.log(req.session);
+
+    const userRole = req.session.userRole || 'regular';
 
     const [notificationRows,] = await db.query(query, [userRole]);
     const notifications = notificationRows.map(row => new Notification(

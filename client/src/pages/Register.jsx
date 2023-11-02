@@ -23,19 +23,19 @@ export const Register = (props) => {
     }
     // alert("User registered successfully!");
     try {
-      const response = await fetch("http://localhost:5000/register", {
+      const response = await fetch("/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email, password: pass }), // Pass the data to the API
       });
-  
+
       if (response.status === 201) {
         // If the status code is 201 (Created), it means the user was registered successfully
         console.log(name);
         console.log(email);
-        navigate('/welcome');
+        navigate("/welcome");
       } else {
         // Handle registration failure, e.g., user already exists
         const data = await response.json();
