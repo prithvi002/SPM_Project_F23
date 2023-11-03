@@ -1,8 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, Navigate } from "react-router-dom";
+import UserContext from "../UserContext";
 
 export const Homepage = () => {
-  return (
+  const { user } = useContext(UserContext);
+  return user ? (
+    <Navigate to="/welcome" />
+  ) : (
     <div className="welcome-page">
       <h1>Welcome!</h1>
 

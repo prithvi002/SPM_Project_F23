@@ -1110,19 +1110,6 @@ VALUES (
         33,
         'LU121'
     );
--- Booking Sample Data
-INSERT INTO Booking (
-        UserID,
-        FlightID,
-        NumPassengers,
-        TotalPrice,
-        Status
-    )
-VALUES (1, 1, 2, 1000.00, 'booked'),
-    (2, 3, 1, 450.00, 'booked'),
-    (3, 4, 3, 1800.00, 'booked'),
-    (4, 5, 1, 350.00, 'booked'),
-    (5, 2, 4, 1200.00, 'canceled');
 -- CouponCode Sample Data
 INSERT INTO CouponCode (
         CouponCode,

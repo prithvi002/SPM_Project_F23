@@ -1,21 +1,23 @@
 import { db } from "../mysql.js";
-import User from "../models/User.js";
 
 export async function authenticateUser(req, res) {
+    if (req.session.user) {
+        return res.status(200).json({ message: "Success", data: req.session.user });
+    }
+
     const { email, password } = req.body;
     if (!email || !password) {
         return res.status(400).json({ message: 'Email and password are required' });
     }
     const query = `
-        SELECT UserID, UserRole FROM User WHERE Email = ? AND Password = ?
+        SELECT * FROM User WHERE Email = ? AND Password = ?
     `;
     try {
         const result = await db.query(query, [email, password]);
         if (result[0].length > 0) {
-            console.log(result);
-            req.session.userRole = result[0][0].UserRole;
-            console.log(req.session)
-            return res.status(200).json({ message: "Success" });
+            const user = result[0][0];
+            req.session.user = user;
+            return res.status(200).json({ message: "Success", data: user });
         } else {
             return res.status(401).json({ message: "Invalid email or password" });
         }
@@ -29,4 +31,12 @@ export async function authenticateUser(req, res) {
 export async function logout(req, res) {
     req.session = null;
     return res.status(200).json({ message: "Success" });
+}
+
+export async function check(req, res) {
+    if (req.session.user) {
+        return res.status(200).json({ message: "Success", data: req.session.user });
+    } else {
+        return res.status(401).json({ message: "Unauthorized" });
+    }
 }

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../UserContext";
 
 export const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ export const Register = (props) => {
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
 
   const isSubmitDisabled = () => {
     return !(isNameValid(name) && email && isPasswordValid(pass));
@@ -95,7 +97,9 @@ export const Register = (props) => {
     return true;
   };
 
-  return (
+  return user ? (
+    <Navigate to="/welcome" />
+  ) : (
     <div className="auth-form-container">
       <form className="register-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Full Name</label>

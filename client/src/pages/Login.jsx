@@ -1,23 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { apiFetch } from "../api";
+import UserContext from "../UserContext";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(e.target.email.value);
     try {
-      const response = await fetch("/login", {
+      const response = await apiFetch("/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: JSON.stringify({ email, password }),
       });
 
@@ -25,6 +25,7 @@ export const Login = () => {
 
       if (response.status === 200) {
         setMessage("Success");
+        setUser(data.data);
         navigate("/welcome");
       } else {
         setMessage(data.message);
@@ -34,7 +35,9 @@ export const Login = () => {
     }
   };
 
-  return (
+  return user ? (
+    <Navigate to="/welcome" />
+  ) : (
     <div className="auth-form-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">email</label>

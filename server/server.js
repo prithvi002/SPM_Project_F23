@@ -3,7 +3,7 @@ import cors from 'cors'
 import session from 'cookie-session'
 import { getNotifications } from './controllers/notificationsController.js'
 import { getUsers } from './controllers/userController.js'
-import { authenticateUser, logout } from './controllers/loginController.js'
+import { authenticateUser, check, logout } from './controllers/loginController.js'
 import { registerUser } from './controllers/registerController.js'
 
 
@@ -36,5 +36,6 @@ app.get('/users', getUsers)
 app.post('/login', authenticateUser)
 app.post('/register', registerUser)
 app.post('/logout', logout)
+app.get('/users/check', check)
 
 app.listen(5000, () => { console.log("Server started on port 5000") })

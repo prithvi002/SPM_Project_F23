@@ -11,7 +11,7 @@ export async function getNotifications(req, res) {
 
     console.log(req.session);
 
-    const userRole = req.session.userRole || 'regular';
+    const userRole = req.session.user.UserRole || 'regular';
 
     const [notificationRows,] = await db.query(query, [userRole]);
     const notifications = notificationRows.map(row => new Notification(
