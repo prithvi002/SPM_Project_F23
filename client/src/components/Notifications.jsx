@@ -7,8 +7,10 @@ const Notifications = () => {
   useEffect(() => {
     (async () => {
       const response = await apiFetch(`/notifications`);
-      const data = await response.json();
-      setNotifications(data);
+      if (response.status === 200) {
+        const data = await response.json();
+        setNotifications(data);
+      }
     })();
   }, []);
 

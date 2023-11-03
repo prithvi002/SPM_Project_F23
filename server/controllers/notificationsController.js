@@ -2,6 +2,10 @@ import { db } from "../mysql.js";
 import Notification from "../models/Notification.js";
 
 export async function getNotifications(req, res) {
+    if (!req.session.user) {
+        return res.status(401).json({ message: 'Not logged in' });
+    }
+
     const query = `
         SELECT NotificationID, UserRole, Message, Timestamp
         FROM Notifications

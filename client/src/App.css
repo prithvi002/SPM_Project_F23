@@ -69,3 +69,106 @@ button {
   background-color: #7439db;
   max-width: 65ch;
 }
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form-select {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: #7439db;
+  width: 65ch;
+}
+
+.flight-result {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #c66fbc;
+  background-color: #ffffff;
+  color: #333333;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 60ch;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flight-basics {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.flight-code {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #7439db;
+}
+
+.flight-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flight-departure,
+.flight-arrival {
+  font-size: 0.9rem;
+  color: #555555;
+}
+
+.flight-duration {
+  font-size: 0.85rem;
+  color: #777777;
+  font-style: italic;
+}
+
+.flight-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0%;
+}
+
+.flight-price > .flight-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #7439db;
+  margin-bottom: 0.5rem;
+}
+
+.flight-book {
+  padding: 0.5rem 1rem;
+  background-color: #c66fbc;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.flight-book:hover {
+  background-color: #a5569a;
+}
+
+.flight-result p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.results-box {
+  display: flex;
+  flex-direction: column;
+  width: 65ch;
+}

@@ -5,6 +5,7 @@ import { getNotifications } from './controllers/notificationsController.js'
 import { getUsers } from './controllers/userController.js'
 import { authenticateUser, check, logout } from './controllers/loginController.js'
 import { registerUser } from './controllers/registerController.js'
+import { getAirports, searchForFlight } from './controllers/searchController.js'
 
 
 const app = express()
@@ -37,5 +38,7 @@ app.post('/login', authenticateUser)
 app.post('/register', registerUser)
 app.post('/logout', logout)
 app.get('/users/check', check)
+app.get('/airports', getAirports)
+app.post('/searchFlights', searchForFlight)
 
 app.listen(5000, () => { console.log("Server started on port 5000") })

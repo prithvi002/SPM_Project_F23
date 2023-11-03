@@ -1,29 +1,35 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Notifications from "../components/Notifications";
 import { useNavigate } from "react-router-dom";
 import UserContext from "../UserContext";
+import { apiFetch } from "../api";
 
 export const UserHomepage = () => {
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
 
-  if (!user) {
-    navigate("/login");
-  }
+  const handleLogout = async () => {
+    await apiFetch("/logout", { method: "POST" });
+    setUser(null);
 
-  const handleLogout = () => {
-    fetch("/logout", { method: "POST" });
     navigate("/");
   };
 
-  return (
+  return !user ? (
+    <Navigate to="/" />
+  ) : (
     <div className="welcome-page">
       <h1>Welcome {user.FirstName}! This is your homepage</h1>
 
       <Notifications />
-      <Link to="/" onClick={handleLogout} className="logout-button">
+
+      <button onClick={handleLogout} className="logout-button">
         Logout
+      </button>
+
+      <Link to="/search" className="link-btn">
+        Search
       </Link>
     </div>
   );
