@@ -38,9 +38,11 @@ button {
 }
 
 .link-btn {
-  background-color: transparent;
-  color: white;
-  text-decoration: underline;
+  background-color: white;
+  color: purple;
+  text-decoration: none;
+  padding: 1rem;
+  margin: 1rem 0 0 0;
 }
 
 .homepage-logo {
@@ -172,3 +174,16 @@ button {
   flex-direction: column;
   width: 65ch;
 }
+
+/*.contact-submit{*/
+/*  padding: 0.5rem 1rem 0.5rem 1rem;*/
+/*  margin: 1rem;*/
+/*}*/
+
+/*.contact-input{*/
+/*  padding: 1rem 5rem 1rem 1rem;*/
+/*  margin: 0.6rem;*/
+/*  width: 12rem;*/
+/*}*/
+
+

@@ -1,0 +1,28 @@
+/* ContactForm.css */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+}
+
+.contact-details{
+    color: black;
+    text-align: left;
+    font-weight: bolder;
+}

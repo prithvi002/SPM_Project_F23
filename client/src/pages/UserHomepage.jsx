@@ -31,6 +31,9 @@ export const UserHomepage = () => {
       <Link to="/search" className="link-btn">
         Search
       </Link>
+        <Link to="/contact" className="link-btn">
+            Contact Us!
+        </Link>
     </div>
   );
 };

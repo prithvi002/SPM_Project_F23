@@ -16,6 +16,7 @@ import "./App.css";
 import UserContext from "./UserContext";
 import { apiFetch } from "./api";
 import Search from "./pages/Search";
+import Contact from "./pages/Contact";
 
 function App() {
   const TRACKING_ID = "G-GMVY4B99CC"; // tracking id for GA
@@ -64,6 +65,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/welcome" element={<UserHomepage />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </Router>
       </UserContext.Provider>
