@@ -17,7 +17,7 @@ import UserContext from "./UserContext";
 import { apiFetch } from "./api";
 import Search from "./pages/Search";
 import Contact from "./pages/Contact";
-
+import DiscountCodes from "./pages/DiscountCodes";
 function App() {
   const TRACKING_ID = "G-GMVY4B99CC"; // tracking id for GA
   ReactGA.initialize(TRACKING_ID);
@@ -42,6 +42,19 @@ function App() {
     })();
   }, [setUser]);
 
+ /* useEffect(() => {
+    (async () => {
+      const response = await apiFetch("/couponcodes");
+      if (response.status === 200) {
+        const data = await response.json();
+        setDiscountCodes(data);
+      } else {
+        setDiscountCodes(null);
+      }
+    })();
+  }, [setDiscountCodes]);*/
+
+
   return (
     <div className="App">
       <UserContext.Provider value={{ user, setUser }}>
@@ -65,6 +78,7 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/welcome" element={<UserHomepage />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/discountcodes" element={<DiscountCodes />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </Router>

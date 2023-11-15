@@ -99,11 +99,31 @@ button {
   width: 60ch;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+.coupon-codes {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c66fbc;
+  background-color: #ffffff;
+  color: #333333;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 60ch;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 .flight-basics {
   display: flex;
   flex: 1 1 0%;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.coupon-percent-details {
+  display: flex;
+  /*flex: 1 1 0%;*/
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding-right: 1rem;

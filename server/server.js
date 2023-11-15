@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import session from 'cookie-session'
 import { getNotifications } from './controllers/notificationsController.js'
+import { persistCouponCodes } from './controllers/couponCodesController.js'
 import { getUsers } from './controllers/userController.js'
 import { authenticateUser, check, logout } from './controllers/loginController.js'
 import { registerUser } from './controllers/registerController.js'
@@ -33,6 +34,7 @@ app.use(express.json());
 // })
 
 app.get('/notifications', getNotifications)
+app.get('/addCouponCode', persistCouponCodes)
 app.get('/users', getUsers)
 app.post('/login', authenticateUser)
 app.post('/register', registerUser)

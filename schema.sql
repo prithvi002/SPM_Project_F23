@@ -51,6 +51,7 @@ CREATE TABLE CouponCode (
     CouponCode VARCHAR(20) NOT NULL UNIQUE,
     DiscountPercentage DECIMAL(5, 2) NOT NULL,
     ExpiryDate DATE,
+    ApplicableFor VARCHAR(1000),
     MaxUsageCount INT,
     CurrentUsageCount INT DEFAULT 0
 );

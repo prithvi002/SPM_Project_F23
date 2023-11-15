@@ -31,6 +31,9 @@ export const UserHomepage = () => {
       <Link to="/search" className="link-btn">
         Search
       </Link>
+        {user.UserRole==='admin' && <Link to="/discountcodes" className="link-btn">
+            Provide Coupon codes
+        </Link>}
         <Link to="/contact" className="link-btn">
             Contact Us!
         </Link>
