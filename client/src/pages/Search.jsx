@@ -8,12 +8,33 @@ export default function Search() {
   const [airports, setAirports] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [favorites, setFavorites] = useState([]);
 
   const today = new Date();
   const airportOptions = airports.map((airport) => ({
     value: airport.AirportCode,
     label: `${airport.AirportName} - ${airport.AirportCode}`,
   }));
+
+  const handleToggleFavorite = (flightId) => {
+    const existingFavorite = favorites.find((fav) => fav.FlightId === flightId);
+    console.log(existingFavorite);
+    if (existingFavorite) {
+      // If the flight is already a favorite, remove it
+      const updatedFavorites = favorites.filter((fav) => fav.FlightId !== flightId);
+      setFavorites(updatedFavorites);
+    } else {
+      // If the flight is not a favorite, add it
+      const selectedFlight = flights.find((flight) => flight.FlightId === flightId);
+      setFavorites([...favorites, selectedFlight]);
+    }
+  };
+
+  const isFavorite = (flightId) => {
+    console.log("Reached here");
+    console.log(favorites);
+    return favorites.some((fav) => fav.FlightID === flightId);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,12 +121,20 @@ export default function Search() {
           loading ? (
             <p key="loading">Loading...</p>
           ) : flights.length > 0 ? (
-            flights.map((flight) => <SearchResult flight={flight} />)
+            flights.map((flight) => <SearchResult flight={flight} onToggleFavorite={handleToggleFavorite} isFavorite={isFavorite} />)
           ) : (
             <p key="no-results">No results found for this search.</p>
           )
         ) : (
           <p>Hit "Search" to see results.</p>
+        )}
+      </div>
+      <div className="favorites-box">
+        <h2>Favorites</h2>
+        {favorites.length > 0 ? (
+          favorites.map((flight) => <SearchResult flight={flight} onToggleFavorite={handleToggleFavorite} isFavorite={isFavorite} />)
+        ) : (
+          <p>No favorites yet.</p>
         )}
       </div>
     </>
